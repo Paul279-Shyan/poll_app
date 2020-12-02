@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls: Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center"> Welcome to the Polls </h1>
+    <h3 class="text-center"> Lets know your Choice </h3>
+
+    <div  style="margin-top: 5%" class="lead card card-body">
+        {% if  latest_question %}
+            <ul type="circle">
+                {% for question in latest_question %}
+                <li><a href="{% url 'detail' question.id %}" style="text-decoration: none; font-family: cursive; font_size: 30px"> {{ question.question_text }} </a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <div>
+        <a href="{% url 'logout' %}"><button class="btn btn-warning btn-lg"> Logout </button></a>
+    </div>
+
+</body>
+</html>

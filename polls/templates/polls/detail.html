@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls: Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <h1> {{ question }} </h1>
+
+
+    <div>
+        {% if error %}
+            <p class="lead"> {{ error }} </p>
+        {% endif %}
+    </div>
+
+    <div style="margin-left: 2%; margin-top: 4%" class="card card-body">
+        <h3 class="text-center"> Choose your Choice and Vote</h3>
+        <form action="{% url 'vote' question.id %}" method="POST">
+
+            {% for choice in question.choice_set.all %}
+                {% csrf_token %}
+                <input type="radio" name="choice" id=" choice{{ forloop.counter }}" value=" {{ choice.id }}">
+                <label id="choice {{ forloop.counter }}" style="font-size: 20px;"> {{ choice.choice_text }}</label>
+                <br>
+            {% endfor %}
+            <input type="submit" value="Vote" class="btn btn-primary btn-block">
+        </form>
+    </div>
+</body>
+</html>

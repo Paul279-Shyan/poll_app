@@ -1,0 +1,1 @@
+web: gnuicorn poll_app3.wsgi --log-file -

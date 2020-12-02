@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center" style="margin-bottom: 20px"> Login Page </h1>
+
+    <form method="POST" action="">
+        <div class="container ">
+            {% csrf_token %}
+            <div class="form-control" style="margin-bottom: 20px">
+                <label> Username </label>
+                <input type="text" name="username">
+            </div>
+
+             <div class="form-control" style="margin-bottom: 20px">
+                <label> Password </label>
+                <input type="password" name="password">
+            </div>
+
+            <div>
+                <input type="submit" style="margin-bottom: 20px" class="btn btn-lg btn-warning">
+                <a href="{% url 'register' %}" > <big style="margin-left: 5%;"> Sign Up </big></a>
+            </div>
+
+            {% for message in messages %}
+                <p class="text-danger"> {{ message }}</p>
+            {% endfor %}
+        </div>
+    </form>
+</body>
+</html>
